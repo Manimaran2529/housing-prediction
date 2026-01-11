@@ -8,4 +8,4 @@ mm = pd.get_dummies(mm, columns=["furnishingstatus"])
 
 list2=[ "price","area"]
 mm[list2]= StandardScaler().fit_transform(mm[list2])
-print(mm[list2].round(2))
+mm[list2].round(2)
