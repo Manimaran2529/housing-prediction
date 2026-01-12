@@ -27,12 +27,4 @@ list4=["price","area"]# this a datasets we want to change
 mm[list4]=StandardScaler().fit_transform(mm[list4])# we use a standarscaler for change 
 #print(mm.head(10)) # round is used for print the laste 2 decimnals only
 
-plt.boxplot(
-    [mm[mm["airconditioning"] == 0]["price"],
-     mm[mm["airconditioning"] == 1]["price"]],
-    labels=["No AC", "AC"]
-)
-plt.title("box plot")
-plt.xlabel("number of  airconditioning")
-plt.ylabel("prsent of bedrooms")
-plt.show()
+
