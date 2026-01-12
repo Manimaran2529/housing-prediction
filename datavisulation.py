@@ -46,7 +46,7 @@ mm=pd.read_csv("Housing.csv")
 
 
 #grouped bar chat is used for the categorical  vs categorical data 
-#sns.countplot(
+#sns.barplot(
 #    x="mainroad",
  #   hue="guestroom",
   #  data=mm
@@ -59,5 +59,47 @@ mm=pd.read_csv("Housing.csv")
 
 
 #multivarite chart more than 2 figure 
+# scatter plot 
+
+#sns.scatterplot(
+#    x="bedrooms",
+#    y="bathrooms",
+#    hue="mainroad",   # categorical variable
+#    data=mm
+#)
+
+#plt.title("Bedrooms vs Bathrooms (Main Road Access)")
+#plt.xlabel("Number of Bedrooms")
+#plt.ylabel("Number of Bathrooms")
+#plt.show()
 
 
+
+
+#multivate 
+
+#for read a  numcerical vs numcerical vs cat
+#import pandas as pd
+#import matplotlib.pyplot as plt
+#import seaborn as sns
+
+#mm = pd.read_csv("Housing.csv")
+
+#sns.barplot(
+#    x="mainroad",
+#    y="price",
+#    hue="airconditioning",
+#    data=mm
+#)
+
+#plt.xlabel("Main Road")
+#plt.ylabel("Average House Price")
+#plt.title("Average House Price by Main Road and Air Conditioning")
+#plt.show()
+
+
+#heat map is used for find the corelation
+#corr=mm.corr()
+#plt.figure(figsize=(10,10))
+#sns.heatmap(corr,annot=True,cmap="coolwarm")
+#plt.show()
