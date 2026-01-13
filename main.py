@@ -28,13 +28,21 @@ list4=["price","area"]# this a datasets we want to change
 mm[list4]=StandardScaler().fit_transform(mm[list4])# we use a standarscaler for change 
 #print(mm.head(10)) # round is used for print the laste 2 decimnals only
 
-corr=mm.corr()
-plt.figure(figsize=(10,10))
-sns.heatmap(
-    corr,annot=True,cmap="coolwarm",
+#corr=mm.corr()
+#plt.figure(figsize=(10,10))
+#sns.heatmap(
+  #  corr,annot=True,cmap="coolwarm",
 
-)
-plt.title("relation map")
+#)
+##plt.title("relation map")
 
 X = mm[["area","bathrooms","stories","parking","bedrooms"]]
 y = mm["price"]
+sns.scatterplot(
+    data=mm,
+    x="area",
+    y="price",
+    hue="mainroad"
+)
+plt.title("Price vs Area by Mainroad")
+plt.show()
