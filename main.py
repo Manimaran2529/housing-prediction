@@ -45,4 +45,4 @@ sns.scatterplot(
     hue="mainroad"
 )
 plt.title("Price vs Area by Mainroad")
-plt.show()
+
