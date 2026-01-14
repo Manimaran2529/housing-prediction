@@ -19,4 +19,3 @@ plt.title("heat map")
 plt.show()
 
 x=["area","bedrooms","bathrooms","airconditioning","stories","parking","prefarea"]
-y=["price"]
