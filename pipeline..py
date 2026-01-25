@@ -4,8 +4,8 @@ from sklearn.model_selection import train_test_split
 from matplotlib  import pyplot as plt
 import seaborn as sns
 from sklearn.linear_model import LinearRegression
-from sklearn.metrics import r2_score, mean_squared_error
-
+from sklearn.metrics import r2_score
+from sklearn.pipeline import Pipeline
 
 mm=pd.read_csv("Housing.csv")
 list1=["bathrooms","stories"]
@@ -34,25 +34,15 @@ y=mm["price"]
 
 x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=10)
 
-pt_x=PowerTransformer(method="yeo-johnson")
-X_train=pt_x.fit_transform(x_train)
-X_test=pt_x.transform(x_test)
+pipe=Pipeline([
+    ("PowerTransformer",PowerTransformer(method="yeo-johnson")),
+   ("LinearRegression",LinearRegression())
+])
 
 
+pipe.fit(x_train,y_train)
 
-pt_y = PowerTransformer(method="yeo-johnson")
+y_pre=pipe.predict(x_test)
 
-Y_train_resize=y_train.values.reshape(-1,1)
-Y_test_resize=y_test.values.reshape(-1,1)
-
-
-Y_train_pt=pt_y.fit_transform(Y_train_resize)
-Y_test_pt=pt_y.transform(Y_test_resize)
-
-clf=LinearRegression()
-clf.fit(X_train,Y_train_pt)
-
-Y_pred=clf.predict(X_test)
-
-print("r2score:",r2_score(Y_test_pt,Y_pred))
+print("r2score:",r2_score(y_test,y_pre))
 
