@@ -38,21 +38,13 @@ pd_x=PowerTransformer(method="yeo-johnson")
 x_train_pd=pd_x.fit_transform(x_train)
 x_test_pd=pd_x.transform(x_test)
 
-pd_y=PowerTransformer(method="yeo-johnson")
-y_train_resize=y_train.values.reshape(-1,1)
-y_test_resize=y_test.values.reshape(-1,1)
-
-y_train_pd=pd_y.fit_transform(y_train_resize)
-y_test_pd=pd_y.transform(y_test_resize)
-
-
 lr=LinearRegression()
-lr.fit(x_train_pd,y_train_pd)
+lr.fit(x_train_pd,y_train)
 
 y_pre=lr.predict(x_test_pd)
 y_pr=lr.predict(x_train_pd)
 
-print("r2score",r2_score(y_test_pd,y_pre))
+print("r2score",r2_score(y_test,y_pre))
 area = float(input("Enter area (sqft): "))
 bedrooms = int(input("Enter number of bedrooms: "))
 bathrooms = int(input("Enter number of bathrooms: "))
@@ -76,6 +68,6 @@ pd_mani=pd_x.transform(mani)
 
 pd_predict=lr.predict(pd_mani)
 
-maran=pd_y.inverse_transform(pd_predict)
+maran=pd_x.inverse_transform(pd_predict)
 
 print("house price",maran[0][0])
