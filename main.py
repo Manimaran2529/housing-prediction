@@ -50,6 +50,7 @@ lr=LinearRegression()
 lr.fit(x_train_pd,y_train_pd)
 
 y_pre=lr.predict(x_test_pd)
+y_pr=lr.predict(x_train_pd)
 
 print("r2score",r2_score(y_test_pd,y_pre))
 area = float(input("Enter area (sqft): "))
